@@ -1,7 +1,7 @@
 package labTwo.dataStructures.linkedList;
 
 public class LinkedList {
-    private Node head;
+    public Node head;
 
     public LinkedList() {
         this.head = null;
