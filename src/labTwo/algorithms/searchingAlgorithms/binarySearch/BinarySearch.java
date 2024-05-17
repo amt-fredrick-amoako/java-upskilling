@@ -1,5 +1,6 @@
 package labTwo.algorithms.searchingAlgorithms.binarySearch;
 
+
 public class BinarySearch {
      static int search(int[] arr, int target){
         int left = 0;
