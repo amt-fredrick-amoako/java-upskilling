@@ -5,6 +5,8 @@ public class Program {
         LinkedList linkedList = new LinkedList();
         linkedList.addToTail("Fredrick Amoako");
         linkedList.addToTail("Kweku Amoako");
+        System.out.println(linkedList.search("Fredrick Amoako"));
+        linkedList.delete("Fredrick Amoako");
         linkedList.printList();
     }
 }
