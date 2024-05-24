@@ -2,7 +2,6 @@ package labTwo.dataStructures.studentManager;
 
 import labTwo.dataStructures.studentManager.builders.CoursesGenerator;
 import labTwo.dataStructures.studentManager.models.*;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
@@ -27,9 +26,13 @@ public class StudentsManager {
     }
 
     public Student getStudent(String name){
+        if (currentIndex == 0){
+            throw new Error("There are no registered students, consider adding students first");
+        }
+
         int index;
         for(int i = 0; i < currentIndex; i++){
-            if(students[i].getFullName() == name){
+            if(students[i].getFullName().equalsIgnoreCase(name)){
                 index = i;
                 System.out.println("Found student: " + students[i] + " at index: " + index);
                 return students[i];
@@ -42,7 +45,7 @@ public class StudentsManager {
     public void removeStudent(String name) {
         int index = -1;
         for (int i = 0; i < currentIndex; i++) {
-            if (students[i].getFullName().equals(name)) {
+            if (students[i].getFullName().equalsIgnoreCase(name)) {
                 index = i;
                 break;
             }
@@ -67,14 +70,14 @@ public class StudentsManager {
             System.out.println(" ");
             return;
         }
-        String start = "\"";
+        String start = "\"\n[";
         for(var student : students){
 
             if (student != null) {
                 start += student + ",";
             }
         }
-        start += "\"";
+        start += "]\"";
         System.out.println(start);
     }
 
@@ -133,6 +136,7 @@ public class StudentsManager {
         System.out.println("Student added successfully");
     }
 
+    // get inputs from user
     private static String getDepartment(Scanner scanner) {
         System.out.print("Enter department: ");
         String department = scanner.nextLine().trim();
