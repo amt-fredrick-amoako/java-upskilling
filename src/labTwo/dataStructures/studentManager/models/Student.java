@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class Student {
     private String fullName;
@@ -20,7 +21,7 @@ public class Student {
 
     public Student(String fullName, LocalDate birthDate, YearLevel yearLevel, Department department, Gender gender) {
         this.fullName = fullName;
-        this.age = birthDate.getYear();
+        this.age = LocalDate.now().getYear() - birthDate.getYear();
         this.birthDate = birthDate;
         this.yearLevel = yearLevel;
         this.department = department;
@@ -46,7 +47,7 @@ public class Student {
     }
 
     public int getAge() {
-        return this.age = 2024 - birthDate.getYear();
+        return this.age = LocalDate.now().getYear() - birthDate.getYear();
     }
 
     public void setAge(int age) {
@@ -97,7 +98,6 @@ public class Student {
         return new Builder();
     }
 
-    public static class Builder extends StudentDepartmentBuilder<Builder> {
-
-    }
+    // builder interface for building student information.
+    public static class Builder extends StudentDepartmentBuilder<Builder> {}
 }
