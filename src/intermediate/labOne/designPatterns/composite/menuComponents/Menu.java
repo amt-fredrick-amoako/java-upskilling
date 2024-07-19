@@ -1,5 +1,7 @@
 package intermediate.labOne.designPatterns.composite.menuComponents;
 
+import intermediate.exceptions.MenuException;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Stack;
@@ -41,14 +43,18 @@ public class Menu extends MenuComponent {
 
     @Override
     public void print() {
-        System.out.println("\n" + getName());
-        System.out.println(", " + getDescription());
-        System.out.println("---------------------");
+        try {
+            System.out.println("\n" + getName());
+            System.out.println(", " + getDescription());
+            System.out.println("---------------------");
 
-        Iterator<MenuComponent> iterator = menuComponents.iterator();
-        while (iterator.hasNext()) {
-            MenuComponent menuComponent = iterator.next();
-            menuComponent.print();
+            Iterator<MenuComponent> iterator = menuComponents.iterator();
+            while (iterator.hasNext()) {
+                MenuComponent menuComponent = iterator.next();
+                menuComponent.print();
+            }
+        } catch (MenuException e) {
+            System.out.println(e.getLocalizedMessage());
         }
     }
 
@@ -87,7 +93,11 @@ public class Menu extends MenuComponent {
                 Iterator<MenuComponent> iterator = stack.peek();
                 MenuComponent component = iterator.next();
                 if(component instanceof Menu){
-                    stack.push(component.createIterator()); // push component on stack if it's a menu
+                    try {
+                        stack.push(component.createIterator()); // push component on stack if it's a menu
+                    } catch (MenuException e) {
+                        System.out.println(e.getLocalizedMessage());
+                    }
                 }
                 return component;
             }else{
