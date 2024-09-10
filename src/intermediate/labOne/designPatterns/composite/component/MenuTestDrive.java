@@ -1,6 +1,6 @@
 package intermediate.labOne.designPatterns.composite.component;
 
-import intermediate.exceptions.MenuException;
+import intermediate.exceptions.NotImplementedException;
 import intermediate.labOne.designPatterns.composite.menuComponents.Menu;
 import intermediate.labOne.designPatterns.composite.menuComponents.MenuComponent;
 import intermediate.labOne.designPatterns.composite.menuComponents.MenuItem;
@@ -25,7 +25,7 @@ public class MenuTestDrive {
 
             Waitress waitress = new Waitress(allMenus);
             waitress.printMenu();
-        } catch (MenuException e) {
+        } catch (NotImplementedException e) {
             System.out.println(e.getLocalizedMessage());
         }
     }

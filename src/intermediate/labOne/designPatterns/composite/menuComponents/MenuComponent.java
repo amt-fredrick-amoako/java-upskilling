@@ -1,43 +1,43 @@
 package intermediate.labOne.designPatterns.composite.menuComponents;
 
-import intermediate.exceptions.MenuException;
+import intermediate.exceptions.NotImplementedException;
 
 import java.util.Iterator;
 
 public abstract class MenuComponent {
-    public void add(MenuComponent menuComponent) throws MenuException {
-        throw new MenuException("Action not supported");
+    public void add(MenuComponent menuComponent) throws NotImplementedException {
+        throw new NotImplementedException("Method not Implemented!");
     }
 
-    public void remove(MenuComponent menuComponent) throws MenuException {
-        throw new MenuException("Action not supported");
+    public void remove(MenuComponent menuComponent) throws NotImplementedException {
+        throw new NotImplementedException("Method not Implemented!");
     }
 
-    public MenuComponent getChild(int i) throws MenuException {
-        throw new MenuException("Action not supported");
+    public MenuComponent getChild(int i) throws NotImplementedException {
+        throw new NotImplementedException("Method not Implemented!");
     }
 
-    public String getName() throws MenuException {
-        throw new MenuException("Action not supported");
+    public String getName() throws NotImplementedException {
+        throw new NotImplementedException("Method not Implemented!");
     }
 
-    public String getDescription() throws MenuException {
-        throw new MenuException("Action not supported");
+    public String getDescription() throws NotImplementedException {
+        throw new NotImplementedException("Method not Implemented!");
     }
 
-    public double getPrice() throws MenuException {
-        throw new MenuException("Action not supported");
+    public double getPrice() throws NotImplementedException {
+        throw new NotImplementedException("Method not Implemented!");
     }
 
-    public boolean isVegetarian() throws MenuException {
-        throw new MenuException("Action not supported");
+    public boolean isVegetarian() throws NotImplementedException {
+        throw new NotImplementedException("Method not Implemented!");
     }
 
-    public void print() throws MenuException {
-        throw new MenuException("Action not supported");
+    public void print() throws NotImplementedException {
+        throw new NotImplementedException("Method not Implemented!");
     }
 
-    public Iterator<MenuComponent> createIterator() throws MenuException {
-        throw new MenuException("Action not supported");
+    public Iterator<MenuComponent> createIterator() throws NotImplementedException {
+        throw new NotImplementedException("Method not Implemented!");
     }
 }

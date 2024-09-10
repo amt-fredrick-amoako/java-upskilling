@@ -1,6 +1,6 @@
 package intermediate.labOne.designPatterns.composite.component;
 
-import intermediate.exceptions.MenuException;
+import intermediate.exceptions.NotImplementedException;
 import intermediate.labOne.designPatterns.composite.menuComponents.MenuComponent;
 
 public class Waitress {
@@ -17,7 +17,7 @@ public class Waitress {
                 var component = menusIterator.next();
                 component.print();
             }
-        } catch (MenuException e) {
+        } catch (NotImplementedException e) {
             System.out.println(e.getLocalizedMessage());
         }
     }

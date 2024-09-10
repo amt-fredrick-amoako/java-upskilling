@@ -1,6 +1,6 @@
 package intermediate.labOne.designPatterns.composite.menuComponents;
 
-import intermediate.exceptions.MenuException;
+import intermediate.exceptions.NotImplementedException;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -53,7 +53,7 @@ public class Menu extends MenuComponent {
                 MenuComponent menuComponent = iterator.next();
                 menuComponent.print();
             }
-        } catch (MenuException e) {
+        } catch (NotImplementedException e) {
             System.out.println(e.getLocalizedMessage());
         }
     }
@@ -95,7 +95,7 @@ public class Menu extends MenuComponent {
                 if(component instanceof Menu){
                     try {
                         stack.push(component.createIterator()); // push component on stack if it's a menu
-                    } catch (MenuException e) {
+                    } catch (NotImplementedException e) {
                         System.out.println(e.getLocalizedMessage());
                     }
                 }
