@@ -1,6 +1,6 @@
 package intermediate.labOne.designPatterns.composite.menuComponents;
 
-import intermediate.exceptions.NotImplementedException;
+import intermediate.labOne.designPatterns.exceptions.NotImplementedException;
 
 import java.util.ArrayList;
 import java.util.Iterator;

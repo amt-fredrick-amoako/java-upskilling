@@ -1,4 +1,4 @@
-package intermediate.generics;
+package intermediate.labOne.generics.streamsAndComparator;
 
 import java.util.Comparator;
 

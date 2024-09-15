@@ -1,4 +1,4 @@
-package intermediate.exceptions;
+package intermediate.labOne.designPatterns.exceptions;
 
 public class NotImplementedException extends Exception {
     public NotImplementedException() {

@@ -1,8 +1,6 @@
-package intermediate.generics;
+package intermediate.labOne.generics.streamsAndComparator;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
 import static java.lang.System.out;
 
@@ -20,20 +18,12 @@ public class Jukebox<T extends Comparable<T>> {
         songBox.getSongs();
     }
 
-    private void go() {
-       getSongs();
-        out.println(songList);
-        Collections.sort(songList);
-        out.println(songList);
-        var artistCompare = new Song.ArtistCompare<>();
-    }
-
+    // use stream api and comparator for filtering and sorting
     private void getSongs() {
-        var iterator = songList.iterator();
-        while(iterator.hasNext()){
-            var song = iterator.next();
-            out.println(song);
-        }
+        songList.stream()
+                .filter(song -> song instanceof Song)
+                .sorted(new Song.ArtistCompare<>())
+                .forEach(out::println);
     }
 
     public void addSong(T line) {

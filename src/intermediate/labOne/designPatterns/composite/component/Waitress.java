@@ -1,6 +1,6 @@
 package intermediate.labOne.designPatterns.composite.component;
 
-import intermediate.exceptions.NotImplementedException;
+import intermediate.labOne.designPatterns.exceptions.NotImplementedException;
 import intermediate.labOne.designPatterns.composite.menuComponents.MenuComponent;
 
 public class Waitress {
