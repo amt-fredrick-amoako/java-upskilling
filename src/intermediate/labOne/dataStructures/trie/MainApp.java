@@ -1,22 +1,56 @@
 package intermediate.labOne.dataStructures.trie;
 
+import java.util.List;
+
 public class MainApp {
 
     public static void main(String[] args) {
+        // Create an instance of the Trie
+        Trie trie = new Trie();
 
-        Tree trie = new Trie();
-        trie.insert("develop").insert("developing").insert("developer").insert("development")
-                .insert("device").insert("apple").insert("application").insert("applicative")
-                .insert("appletv").insert("ape").insert("band");
+        // Insert words into the Trie
+        trie.insert("apple");
+        trie.insert("app");
+        trie.insert("application");
+        trie.insert("bat");
+        trie.insert("batch");
+        trie.insert("banana");
 
-        System.out.println(trie.containsPrefix("app"));
+        // Test autocomplete functionality
+        String prefix = "app";
+        List<String> suggestions = trie.wordsWithPrefix(prefix);
 
-        System.out.println(trie.wordsWithPrefix("app"));
+        // Display the autocomplete suggestions
+        System.out.println("Words that start with '" + prefix + "':");
+        for (String word : suggestions) {
+            System.out.println(word);
+        }
 
-        System.out.println(trie.contains("applicative"));
-        trie.delete("applicative");
-        System.out.println(trie.contains("applicative"));
+        // Try a different prefix
+        prefix = "ba";
+        suggestions = trie.wordsWithPrefix(prefix);
 
+        // Display the autocomplete suggestions for the new prefix
+        System.out.println("\nWords that start with '" + prefix + "':");
+        for (String word : suggestions) {
+            System.out.println(word);
+        }
+
+        // Check if a word exists in the Trie
+        String wordToCheck = "application";
+        if (trie.contains(wordToCheck)) {
+            System.out.println("\nThe word '" + wordToCheck + "' exists in the Trie.");
+        } else {
+            System.out.println("\nThe word '" + wordToCheck + "' does not exist in the Trie.");
+        }
+
+        // Check if a prefix exists in the Trie
+        String prefixToCheck = "bat";
+        if (trie.containsPrefix(prefixToCheck)) {
+            System.out.println("\nThe prefix '" + prefixToCheck + "' exists in the Trie.");
+        } else {
+            System.out.println("\nThe prefix '" + prefixToCheck + "' does not exist in the Trie.");
+        }
     }
 
 }

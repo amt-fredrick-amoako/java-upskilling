@@ -20,8 +20,9 @@ public class Trie implements Tree {
             if (children.containsKey(c)) {
                 currentNode = children.get(c);
             } else {
-                currentNode = new Node(c);
-                children.put(c, currentNode);
+                Node newNode = new Node(c);
+                children.put(c, newNode);
+                currentNode = newNode;
             }
             children = currentNode.getChildren();
         }
@@ -31,8 +32,8 @@ public class Trie implements Tree {
 
     @Override
     public boolean contains(String word) {
-        Node lastPresentNode = search(word);
-        return lastPresentNode != null && lastPresentNode.isEndOfWord();
+        Node lastNode = search(word);
+        return lastNode != null && lastNode.isEndOfWord();
     }
 
     @Override
@@ -41,7 +42,7 @@ public class Trie implements Tree {
     }
 
     private Node search(String str) {
-        Node currentNode = null;
+        Node currentNode = root;
         Map<Character, Node> children = root.getChildren();
         for (char c : str.toCharArray()) {
             if (!children.containsKey(c)) {
@@ -67,36 +68,36 @@ public class Trie implements Tree {
         if (node.isEndOfWord()) {
             wordList.add(word);
         }
-        node.getChildren().values().forEach(child -> {
-            String character = String.valueOf(child.getCharacter());
-            addWords(child, word.concat(character), wordList);
-        });
+        for (Node child : node.getChildren().values()) {
+            addWords(child, word + child.getCharacter(), wordList);
+        }
     }
 
     @Override
     public void delete(String word) {
-        List<Node> list = new ArrayList<>();
+        List<Node> nodes = new ArrayList<>();
+        Node currentNode = root;
         Map<Character, Node> children = root.getChildren();
         for (char c : word.toCharArray()) {
             if (!children.containsKey(c)) {
-                break;
+                return; // Word not found
             }
-            Node currentNode = children.get(c);
+            currentNode = children.get(c);
+            nodes.add(currentNode);
             children = currentNode.getChildren();
-            list.add(currentNode);
         }
-        if (list.isEmpty() || list.size() != word.length()) {
-            return;
+        if (!currentNode.isEndOfWord()) {
+            return; // Word doesn't exist
         }
-        list.get(list.size() - 1).setEndOfWord(false);
-        for (int i = list.size() - 1; i > 0; i--) {
-            Node current = list.get(i);
-            if (current.isEndOfWord()) {
-                break;
-            } else if (current.getChildren().isEmpty()) {
-                list.get(i - 1).getChildren().remove(current.getCharacter());
+        currentNode.setEndOfWord(false); // Unmark the end of the word
+        for (int i = nodes.size() - 1; i > 0; i--) {
+            Node node = nodes.get(i);
+            if (node.getChildren().isEmpty() && !node.isEndOfWord()) {
+                nodes.get(i - 1).getChildren().remove(node.getCharacter());
+            } else {
+                break; // Stop if current node is still part of another word
             }
         }
     }
-
 }
+
