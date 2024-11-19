@@ -1,4 +1,4 @@
-package intermediate.labOne.dataStructures.dijkstra;
+package intermediate.labOne.algorithms.dijkstra;
 
 import java.util.*;
 

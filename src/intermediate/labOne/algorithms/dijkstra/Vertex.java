@@ -1,4 +1,4 @@
-package intermediate.labOne.dataStructures.dijkstra;
+package intermediate.labOne.algorithms.dijkstra;
 
 public class Vertex <T>{
     private T data;
